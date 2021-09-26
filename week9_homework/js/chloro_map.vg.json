@@ -4,33 +4,53 @@
   "width": 800,
   "height": 600,
   "data": {
-    "url": "https://raw.githubusercontent.com/ptuu0001/3179-testrepo/main/week%209%20hw/web/js/entire_world.topojson",
+    "url": "https://raw.githubusercontent.com/ptuu0001/3179-testrepo/main/week9_homework/js/entire_world.topojson",
     "format": { "type": "topojson", "feature": "entire_world.geo" }
   },
-  "transform": [
+
+  "layer": [
     {
-      "lookup": "properties.name",
-      "from": {
-        "data": {
-          "url": "https://raw.githubusercontent.com/ptuu0001/3179-testrepo/main/week%209%20hw/web/data/2019.csv"
-        },
-        "key": "Country or region",
-        "fields": ["Score"]
+      "transform": [
+        {
+          "calculate": "'No data for ' + datum.properties.name",
+          "as": "note"
+        }
+      ],
+      "mark": { "type": "geoshape", "fill": "lightgray", "stroke": "white" },
+      "encoding": {
+        "tooltip": {
+          "field": "note"
+        }
       }
     },
-    { "calculate": "datum.Score", "as": "Happiness Score" }
-  ],
-  "projection": { "type": "equirectangular" },
-  "mark": { "type": "geoshape" },
-  "encoding": {
-    "color": {
-      "field": "Happiness Score",
-      "type": "quantitative",
-      "scale": { "domain": [2, 10] }
-    },
-    "tooltip": [
-      { "field": "properties.name", "type": "nominal", "title": "Country" },
-      { "field": "Score", "type": "quantitative" }
-    ]
-  }
+    {
+      "transform": [
+        {
+          "lookup": "properties.name",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/ptuu0001/3179-testrepo/main/week9_homework/data/2019.csv"
+            },
+            "key": "Country or region",
+            "fields": ["Score"]
+          }
+        },
+        { "calculate": "datum.Score", "as": "Happiness Score" }
+      ],
+
+      "projection": { "type": "equirectangular" },
+      "mark": { "type": "geoshape" },
+      "encoding": {
+        "color": {
+          "field": "Happiness Score",
+          "type": "quantitative",
+          "scale": { "domain": [2, 10], "scheme": "greens" }
+        },
+        "tooltip": [
+          { "field": "properties.name", "type": "nominal", "title": "Country" },
+          { "field": "Score", "type": "quantitative" }
+        ]
+      }
+    }
+  ]
 }
