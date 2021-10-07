@@ -40,7 +40,7 @@
       "params": [
         {
           "name": "hover",
-          "select": { "type": "point", "fields": ["Entity"], "on": "mouseover" }
+          "select": { "type": "point", "fields": ["Entity"], "on": "click" }
         }
       ],
       "mark": { "type": "line", "strokeWidth": 8, "stroke": "transparent" }
@@ -59,24 +59,9 @@
             "align": "left",
             "dx": 4
           },
-          "params": [
-            {
-              "name": "notOnHover",
-              "select": {
-                "type": "point",
-                "fields": ["Entity"],
-                "on": "mouseout"
-              }
-            }
-          ],
           "encoding": {
             "text": { "field": "Entity", "type": "nominal" },
-            "fillOpacity": {
-              "condition": {
-                "param": "notOnHover",
-                "value": 0
-              }
-            },
+
             "opacity": {
               "condition": {
                 "param": "hover",
@@ -87,6 +72,13 @@
           }
         }
       ]
+    },
+    {
+      "mark": { "type": "line" },
+      "encoding": {
+        "x": { "timeUnit": "year", "field": "Year" },
+        "y": { "aggregate": "average", "field": "Life expectancy" }
+      }
     }
   ]
 }
