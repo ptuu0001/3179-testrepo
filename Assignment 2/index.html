@@ -10,11 +10,43 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css" media="all" />
   </head>
   <body>
-    <div id="chloro_map"></div>
+    <div id="chloro_map" style="display: none"></div>
+    <div id="happiness_bar_chart" style="display: none"></div>
+    <div id="social_happy_scatter_plot" style="display: none"></div>
+    <div id="life_expect_bubble_chart" style="display: none"></div>
+    <div id="life_expect_line_chart"></div>
 
     <script type="text/javascript">
       var spec2 = "js/chloro_map.vg.json";
       vegaEmbed("#chloro_map", spec2)
+        .then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        })
+        .catch(console.error);
+
+      var happinessChart = "js/happiness_bar_chart.vg.json";
+      vegaEmbed("#happiness_bar_chart", happinessChart)
+        .then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        })
+        .catch(console.error);
+
+      var socialScatterPlot = "js/social_happy_scatter_plot.vg.json";
+      vegaEmbed("#social_happy_scatter_plot", socialScatterPlot)
+        .then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        })
+        .catch(console.error);
+
+      var lifeExpectBubble = "js/life_expect_bubble_chart.vg.json";
+      vegaEmbed("#life_expect_bubble_chart", lifeExpectBubble)
+        .then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        })
+        .catch(console.error);
+
+      var lifeExpectLine = "js/life_expect_line_chart.vg.json";
+      vegaEmbed("#life_expect_line_chart", lifeExpectLine)
         .then(function (result) {
           // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         })

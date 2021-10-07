@@ -1,0 +1,31 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Happiness Against Social Support",
+  "width": 800,
+  "height": 600,
+  "data": {
+    "url": "https://raw.githubusercontent.com/ptuu0001/3179-testrepo/main/Assignment%202/data/2019.csv"
+  },
+  "mark": "point",
+  "encoding": {
+    "x": {
+      "field": "Social support",
+      "type": "quantitative"
+    },
+    "y": {
+      "field": "Score",
+      "title": "Happiness Score",
+      "type": "quantitative"
+    },
+    "color": { "value": "#68C2DB" },
+    "tooltip": [
+      {
+        "field": "Country or region",
+        "type": "nominal",
+        "title": "Country"
+      },
+      { "field": "Social support", "type": "quantitative" },
+      { "field": "Score", "type": "quantitative", "title": "Happiness Score" }
+    ]
+  }
+}

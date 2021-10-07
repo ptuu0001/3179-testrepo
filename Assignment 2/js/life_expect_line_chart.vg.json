@@ -1,0 +1,92 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Life Expectancy Overtime",
+  "width": 800,
+  "height": 600,
+  "data": {
+    "url": "https://raw.githubusercontent.com/ptuu0001/3179-testrepo/main/Assignment%202/data/Life%20expectancy%20(217%20years).csv"
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "title": "Year",
+      "type": "temporal"
+    },
+    "y": {
+      "field": "Life expectancy",
+      "title": "Life expectancy (in years)",
+      "type": "quantitative"
+    },
+    "color": {
+      "condition": {
+        "param": "hover",
+        "field": "Entity",
+        "type": "nominal",
+        "legend": null
+      },
+      "value": "grey"
+    },
+    "opacity": {
+      "condition": {
+        "param": "hover",
+        "value": 1
+      },
+      "value": 0.2
+    }
+  },
+
+  "layer": [
+    {
+      "params": [
+        {
+          "name": "hover",
+          "select": { "type": "point", "fields": ["Entity"], "on": "mouseover" }
+        }
+      ],
+      "mark": { "type": "line", "strokeWidth": 8, "stroke": "transparent" }
+    },
+    { "mark": "line" },
+    {
+      "encoding": {
+        "x": { "aggregate": "max", "field": "Year" },
+        "y": { "aggregate": { "argmax": "Year" }, "field": "Life expectancy" }
+      },
+      "layer": [
+        { "mark": { "type": "circle" } },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 4
+          },
+          "params": [
+            {
+              "name": "notOnHover",
+              "select": {
+                "type": "point",
+                "fields": ["Entity"],
+                "on": "mouseout"
+              }
+            }
+          ],
+          "encoding": {
+            "text": { "field": "Entity", "type": "nominal" },
+            "fillOpacity": {
+              "condition": {
+                "param": "notOnHover",
+                "value": 0
+              }
+            },
+            "opacity": {
+              "condition": {
+                "param": "hover",
+                "value": 1
+              },
+              "value": 0
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

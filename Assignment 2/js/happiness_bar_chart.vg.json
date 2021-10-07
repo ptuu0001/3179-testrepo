@@ -1,0 +1,56 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Happiness of the World (Bar Chart)",
+  "width": 800,
+  "height": 600,
+  "data": {
+    "url": "https://raw.githubusercontent.com/ptuu0001/3179-testrepo/main/Assignment%202/data/2019.csv"
+  },
+  "params": [
+    {
+      "name": "Score_Below",
+      "value": 8,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 10,
+        "step": 0.5,
+        "name": "Maximum Happiness Score: "
+      }
+    },
+    {
+      "name": "Score_Above",
+      "value": 6.5,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 10,
+        "step": 0.5,
+        "name": "Minimum Happiness Score: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "window": [
+        {
+          "op": "rank",
+          "as": "rank"
+        }
+      ],
+      "sort": [{ "field": "Score", "order": "descending" }]
+    },
+    { "filter": "datum.Score <= Score_Below" },
+    { "filter": "datum.Score >= Score_Above" }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "Country or region",
+      "type": "nominal",
+      "sort": { "field": "Score", "order": "descending" }
+    },
+    "y": { "field": "Score", "type": "quantitative" },
+    "color": { "value": "#68C2DB" }
+  }
+}
