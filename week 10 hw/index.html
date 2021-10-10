@@ -11,10 +11,18 @@
   </head>
   <body>
     <div id="chloro_map"></div>
+    <div id="happiness_bar_chart"></div>
 
     <script type="text/javascript">
       var spec2 = "js/chloro_map.vg.json";
       vegaEmbed("#chloro_map", spec2)
+        .then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        })
+        .catch(console.error);
+
+      var happinessChart = "js/happiness_bar_chart.vg.json";
+      vegaEmbed("#happiness_bar_chart", happinessChart)
         .then(function (result) {
           // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         })
