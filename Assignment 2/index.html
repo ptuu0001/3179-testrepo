@@ -15,6 +15,9 @@
     <div id="social_happy_scatter_plot" style="display: none"></div>
     <div id="life_expect_bubble_chart" style="display: none"></div>
     <div id="life_expect_line_chart"></div>
+    <div id="avg_life_expect"></div>
+    <div id="life_expect_range_dotplot" style="display: none"></div>
+    <div id="gdp_piechart"></div>
 
     <script type="text/javascript">
       var spec2 = "js/chloro_map.vg.json";
@@ -47,6 +50,27 @@
 
       var lifeExpectLine = "js/life_expect_line_chart.vg.json";
       vegaEmbed("#life_expect_line_chart", lifeExpectLine)
+        .then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        })
+        .catch(console.error);
+
+      var lifeExpectDotPlot = "js/life_expect_range_dotplot.vg.json";
+      vegaEmbed("#life_expect_range_dotplot", lifeExpectDotPlot)
+        .then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        })
+        .catch(console.error);
+
+      var avgLifeExpectLine = "js/avg_life_expect.vg.json";
+      vegaEmbed("#avg_life_expect", avgLifeExpectLine)
+        .then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        })
+        .catch(console.error);
+
+      var gdpPieChart = "js/gdp_piechart.vg.json";
+      vegaEmbed("#gdp_piechart", gdpPieChart)
         .then(function (result) {
           // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         })

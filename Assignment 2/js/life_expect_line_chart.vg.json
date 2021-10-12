@@ -6,6 +6,22 @@
   "data": {
     "url": "https://raw.githubusercontent.com/ptuu0001/3179-testrepo/main/Assignment%202/data/Life%20expectancy%20(217%20years).csv"
   },
+  "params": [
+    {
+      "name": "country_selection",
+      "bind": {
+        "input": "select",
+        "options": [null, "Australia"],
+        "labels": ["Show All", "Australia"],
+        "name": "Country selection: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "country_selection == null || datum.Entity == country_selection"
+    }
+  ],
   "encoding": {
     "x": {
       "field": "Year",
@@ -43,7 +59,18 @@
           "select": { "type": "point", "fields": ["Entity"], "on": "click" }
         }
       ],
-      "mark": { "type": "line", "strokeWidth": 8, "stroke": "transparent" }
+      "mark": {
+        "type": "line",
+        "strokeWidth": 8,
+        "stroke": "transparent",
+        "selection": {
+          "continent_highlight": {
+            "type": "multi",
+            "fields": ["Entity"],
+            "bind": "legend"
+          }
+        }
+      }
     },
     { "mark": "line" },
     {
@@ -77,7 +104,11 @@
       "mark": { "type": "line" },
       "encoding": {
         "x": { "timeUnit": "year", "field": "Year" },
-        "y": { "aggregate": "average", "field": "Life expectancy" }
+        "y": { "aggregate": "average", "field": "Life expectancy" },
+        "opacity": {
+          "condition": { "selection": "country_selection", "value": 1 },
+          "value": 0
+        }
       }
     }
   ]

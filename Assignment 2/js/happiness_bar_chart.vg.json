@@ -13,7 +13,7 @@
       "bind": {
         "input": "range",
         "min": 0,
-        "max": 10,
+        "max": 8,
         "step": 0.5,
         "name": "Maximum Happiness Score: "
       }
@@ -24,7 +24,7 @@
       "bind": {
         "input": "range",
         "min": 0,
-        "max": 10,
+        "max": 8,
         "step": 0.5,
         "name": "Minimum Happiness Score: "
       }
@@ -50,7 +50,15 @@
       "type": "nominal",
       "sort": { "field": "Score", "order": "descending" }
     },
-    "y": { "field": "Score", "type": "quantitative" },
-    "color": { "value": "#68C2DB" }
+    "y": {
+      "field": "Score",
+      "type": "quantitative",
+      "scale": { "domain": [0, 8.5] }
+    },
+    "color": { "value": "#68C2DB" },
+    "tooltip": [
+      { "field": "Country or region", "type": "nominal", "title": "Country" },
+      { "field": "Score", "type": "quantitative", "title": "Happiness Score" }
+    ]
   }
 }
