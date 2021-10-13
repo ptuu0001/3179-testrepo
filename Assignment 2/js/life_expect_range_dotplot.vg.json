@@ -30,7 +30,7 @@
           "field": "Entity",
           "type": "nominal"
         },
-        "color": { "value": "#db646f" }
+        "color": { "value": "#3e43cf" }
       }
     },
 
@@ -62,12 +62,20 @@
           "type": "ordinal",
           "scale": {
             "range": ["#e6959c", "#911a24"]
-          }
+          },
+          "legend": null
         },
         "size": { "value": 100 },
         "opacity": {
           "value": 0
-        }
+        },
+        "tooltip": [
+          {
+            "field": "Life expectancy",
+            "type": "quantitative",
+            "format": ".1f"
+          }
+        ]
       }
     }
   ]

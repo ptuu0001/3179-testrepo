@@ -4,38 +4,25 @@
   "width": 800,
   "height": 600,
   "data": {
-    "url": "https://raw.githubusercontent.com/ptuu0001/3179-testrepo/main/Assignment%202/data/Life%20expectancy%20(217%20years)%20%20No%20countries.csv"
-  },
-  "transform": [
-    {
-      "window": [
-        {
-          "field": "Life expectancy",
-          "op": "mean",
-          "as": "life_expect_avg"
-        }
-      ],
-      "frame": [-15, 15]
-    }
-  ],
-  "encoding": {
-    "x": { "field": "Year", "timeUnit": "year", "title": "Year" },
-    "y": {
-      "type": "quantitative",
-      "axis": { "title": "Life Expectancy (in years)" }
-    }
+    "url": "https://raw.githubusercontent.com/ptuu0001/3179-testrepo/main/Assignment%202/data/Average%20Life%20Expect%20(217%20years).csv"
   },
   "layer": [
     {
-      "mark": { "type": "point", "color": "red", "size": 1 },
+      "mark": { "type": "line", "color": "red", "size": 3 },
       "encoding": {
+        "x": { "field": "Year", "timeUnit": "year", "title": "Year" },
         "y": {
-          "field": "life_expect_avg",
-          "title": "Rolling Mean of Max Temperature"
+          "field": "Average Life Expectancy",
+          "type": "quantitative",
+          "axis": { "title": "Life Expectancy (in years)" }
         },
         "tooltip": [
-          { "field": "Life expectancy", "type": "quantitative" },
-          { "field": "Year", "type": "temporal" }
+          {
+            "field": "Average Life Expectancy",
+            "type": "quantitative",
+            "format": ".1f"
+          },
+          { "field": "Year", "type": "temporal", "format": "%Y" }
         ]
       }
     }
