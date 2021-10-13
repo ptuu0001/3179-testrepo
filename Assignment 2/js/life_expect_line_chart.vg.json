@@ -11,8 +11,42 @@
       "name": "country_selection",
       "bind": {
         "input": "select",
-        "options": [null, "Australia"],
-        "labels": ["Show All", "Australia"],
+        "options": [
+          null,
+          "Australia",
+          "Brazil",
+          "Canada",
+          "China",
+          "France",
+          "Germany",
+          "India",
+          "Italy",
+          "Japan",
+          "Mexico",
+          "Russia",
+          "Spain",
+          "Switzerland",
+          "United Kingdom",
+          "United States"
+        ],
+        "labels": [
+          "Show All",
+          "Australia",
+          "Brazil",
+          "Canada",
+          "China",
+          "France",
+          "Germany",
+          "India",
+          "Italy",
+          "Japan",
+          "Mexico",
+          "Russia",
+          "Spain",
+          "Switzerland",
+          "United Kingdom",
+          "United States"
+        ],
         "name": "Country selection: "
       }
     }
@@ -37,8 +71,7 @@
       "condition": {
         "param": "hover",
         "field": "Entity",
-        "type": "nominal",
-        "legend": null
+        "type": "nominal"
       },
       "value": "grey"
     },
@@ -50,7 +83,7 @@
       "value": 0.2
     }
   },
-
+  "config": { "legend": { "offset": 90, "title": null } },
   "layer": [
     {
       "params": [
@@ -61,7 +94,7 @@
       ],
       "mark": {
         "type": "line",
-        "strokeWidth": 8,
+        "strokeWidth": 15,
         "stroke": "transparent",
         "selection": {
           "continent_highlight": {

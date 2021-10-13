@@ -33,7 +33,10 @@
           "field": "life_expect_avg",
           "title": "Rolling Mean of Max Temperature"
         },
-        "tooltip": [{ "field": "Life expectancy", "type": "quantitative" }]
+        "tooltip": [
+          { "field": "Life expectancy", "type": "quantitative" },
+          { "field": "Year", "type": "temporal" }
+        ]
       }
     }
   ]

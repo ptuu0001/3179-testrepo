@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Happiness of the World",
+  "title": "Happiness of the World (Map)",
   "width": 800,
   "height": 600,
   "data": {
@@ -44,11 +44,19 @@
         "color": {
           "field": "Happiness Score",
           "type": "quantitative",
-          "scale": { "domain": [2, 10], "scheme": "greens" }
+          "scale": {
+            "type": "threshold",
+            "domain": [3, 4, 6, 7],
+            "scheme": "purples"
+          }
         },
         "tooltip": [
           { "field": "properties.name", "type": "nominal", "title": "Country" },
-          { "field": "Score", "type": "quantitative" }
+          {
+            "field": "Happiness Score",
+            "type": "quantitative",
+            "format": ".2f"
+          }
         ]
       }
     }
