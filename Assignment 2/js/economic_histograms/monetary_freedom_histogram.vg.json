@@ -1,0 +1,29 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Monetary Freedom Histogram",
+  "width": 300,
+  "height": 200,
+  "data": {
+    "url": "https://raw.githubusercontent.com/ptuu0001/3179-testrepo/main/Assignment%202/data/economic_freedom_index2019_data.csv"
+  },
+
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "bin": true,
+      "field": "Monetary Freedom"
+    },
+    "y": {
+      "aggregate": "count",
+      "title": "Count of distinct monetary freedoms"
+    },
+    "tooltip": [
+      {
+        "field": "Monetary Freedom",
+        "type": "quantitative",
+        "aggregate": "count",
+        "title": "Number of Distinct Values"
+      }
+    ]
+  }
+}

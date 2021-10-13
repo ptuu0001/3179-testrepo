@@ -1,0 +1,26 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Trade Freedom Histogram",
+  "width": 300,
+  "height": 200,
+  "data": {
+    "url": "https://raw.githubusercontent.com/ptuu0001/3179-testrepo/main/Assignment%202/data/economic_freedom_index2019_data.csv"
+  },
+
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "bin": true,
+      "field": "Trade Freedom"
+    },
+    "y": { "aggregate": "count", "title": "Count of distinct trade freedoms" },
+    "tooltip": [
+      {
+        "field": "Trade Freedom",
+        "type": "quantitative",
+        "aggregate": "count",
+        "title": "Number of Distinct Values"
+      }
+    ]
+  }
+}
