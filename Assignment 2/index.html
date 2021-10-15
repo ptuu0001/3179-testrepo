@@ -19,14 +19,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
+    <h1>What Makes A Country Liveable?</h1>
+    <p>
+      What makes a country a first world country? What makes a country a second
+      world country? These are some questions I wondered while sipping on my
+      morning coffee. So, I decided, why not write an article on this topic.
+      There are many factors that determines a country’s liveability. While this
+      article cannot account for all of them but can at least show the main
+      contributing factors. According to the World Health Organisation (WHO),
+      there are factors known as the determinants of health that influence an
+      individual’s health (1). These determinants of health include but are not
+      limited to social, economic situation, physical living environment and
+      individual’s behaviour. This article will explore various factors that can
+      affect individual’s livelihood and see how they compare against other
+      countries.
+    </p>
     <div id="chloro_map"></div>
     <div id="happiness_bar_chart"></div>
+    <p>
+      The World Happiness Report is an annual survey that collates various
+      quality of life factors, to calculate and rank countries based on a
+      happiness score (2). As the name suggests, a higher score would mean a
+      country/its citizens are more happy. While the rest of the graphs and
+      visualisations in this article may not directly contribute in the
+      happiness scoring process, they are definitely still factors that
+      influences an individual’s happiness level.
+    </p>
     <div id="social_happy_scatter_plot"></div>
     <div id="corrupt_bubble_chart"></div>
     <div id="life_expect_line_chart"></div>
     <div id="avg_life_expect"></div>
     <div id="life_expect_range_dotplot"></div>
-    <div id="gdp_piechart"></div>
+    <div id="gdp_piechart" hidden="true"></div>
+    <div id="eco_score_bar_chart"></div>
 
     <div class="pure-g">
       <div class="pure-u-1-4">
@@ -65,8 +90,8 @@
         })
         .catch(console.error);
 
-      var lifeExpectBubble = "js/corrupt_bubble_chart.vg.json";
-      vegaEmbed("#corrupt_bubble_chart", lifeExpectBubble)
+      var corruptBubbleChart = "js/corrupt_bubble_chart.vg.json";
+      vegaEmbed("#corrupt_bubble_chart", corruptBubbleChart)
         .then(function (result) {
           // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         })
@@ -95,6 +120,13 @@
 
       var gdpPieChart = "js/gdp_piechart.vg.json";
       vegaEmbed("#gdp_piechart", gdpPieChart)
+        .then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        })
+        .catch(console.error);
+
+      var ecoScoreBarChart = "js/eco_score_bar_chart.vg.json";
+      vegaEmbed("#eco_score_bar_chart", ecoScoreBarChart)
         .then(function (result) {
           // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         })

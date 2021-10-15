@@ -8,17 +8,21 @@
   },
   "transform": [
     { "filter": { "field": "Social support", "gt": 0 } },
-    { "filter": { "field": "Healthy life expectancy", "gt": 0 } }
+    { "filter": { "field": "Healthy life expectancy", "gt": 0 } },
+    { "filter": "datum.Score <= Score_Below" },
+    { "filter": "datum.Score >= Score_Above" }
   ],
   "mark": { "type": "circle", "filled": true },
   "encoding": {
     "x": {
       "field": "Perceptions of corruption",
-      "type": "quantitative"
+      "type": "quantitative",
+      "scale": { "domain": [0, 0.5] }
     },
     "y": {
       "field": "Freedom to make life choices",
-      "type": "quantitative"
+      "type": "quantitative",
+      "scale": { "domain": [0, 0.65] }
     },
     "size": {
       "field": "Score",
@@ -51,5 +55,29 @@
         "format": ".2f"
       }
     ]
-  }
+  },
+  "params": [
+    {
+      "name": "Score_Below",
+      "value": 8,
+      "bind": {
+        "input": "range",
+        "min": 2.5,
+        "max": 8,
+        "step": 0.5,
+        "name": "Maximum Happiness Score: "
+      }
+    },
+    {
+      "name": "Score_Above",
+      "value": 2.5,
+      "bind": {
+        "input": "range",
+        "min": 2.5,
+        "max": 8,
+        "step": 0.5,
+        "name": "Minimum Happiness Score: "
+      }
+    }
+  ]
 }

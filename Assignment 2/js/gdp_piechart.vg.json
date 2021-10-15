@@ -6,35 +6,22 @@
   "data": {
     "url": "https://raw.githubusercontent.com/ptuu0001/3179-testrepo/main/Assignment%202/data/economic_freedom_index2019_data.csv"
   },
-  "transform": [
-    {
-      "filter": {
-        "not": {
-          "field": "datum.Country Name",
-          "oneOf": ["Liechtenstein", "Korea, North"]
-        }
-      }
-    },
-    { "filter": { "field": "datum.GDP per Capita (PPP)", "valid": true } }
-  ],
-  "encoding": {
-    "theta": {
-      "field": "GDP per Capita (PPP)",
-      "aggregate": "sum",
-      "type": "quantitative",
-      "stack": true
-    },
-    "color": { "field": "Region", "type": "nominal", "legend": null },
-    "tooltip": [
-      {
-        "field": "Region",
-        "type": "nominal"
-      }
-    ]
-  },
   "layer": [
     {
-      "mark": { "type": "arc", "outerRadius": 80 }
+      "mark": { "type": "arc", "outerRadius": 80 },
+      "encoding": {
+        "theta": {
+          "field": "GDP per Capita (PPP)",
+          "type": "quantitative"
+        },
+        "color": { "field": "Region", "type": "nominal", "legend": null },
+        "tooltip": [
+          {
+            "field": "Region",
+            "type": "nominal"
+          }
+        ]
+      }
     },
     {
       "mark": { "type": "text", "radius": 90 },

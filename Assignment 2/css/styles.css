@@ -1,12 +1,16 @@
 #chloro_map {
-  top: 100px;
+  /* top: 100px;
   bottom: 100px;
   left: 100px;
-  right: 100px;
+  right: 100px; */
   /*height: 1000px;
 	width: 800px;*/
 }
 /* May or may not use */
 .vis-container {
   width: 100%;
+}
+
+p {
+  /* color: blueviolet; */
 }

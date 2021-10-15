@@ -1,0 +1,83 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Economic Index Score",
+  "width": 800,
+  "height": 600,
+  "data": {
+    "url": "https://raw.githubusercontent.com/ptuu0001/3179-testrepo/main/Assignment%202/data/economic_freedom_index2019_data.csv"
+  },
+  "encoding": {
+    "x": {
+      "field": "2019 Score",
+      "type": "quantitative",
+      "scale": { "domain": [0, 100] },
+      "title": "Economic Index Score"
+    },
+    "y": {
+      "field": "Country",
+      "type": "nominal",
+      "sort": "-x"
+    },
+    "tooltip": [
+      {
+        "field": "Country",
+        "type": "nominal",
+        "title": "Country"
+      },
+      {
+        "field": "2019 Score",
+        "type": "quantitative",
+        "title": "Economic Index Score",
+        "format": ".1f"
+      }
+    ]
+  },
+  "transform": [
+    { "filter": "datum['2019 Score'] <= Score_Below" },
+    { "filter": "datum['2019 Score'] >= Score_Above" },
+    {
+      "filter": {
+        "not": { "field": "CountryID", "equal": "141" }
+      }
+    },
+    {
+      "filter": {
+        "not": { "field": "CountryID", "equal": "40" }
+      }
+    }
+  ],
+  "layer": [
+    {
+      "mark": { "type": "bar" },
+      "encoding": {
+        "color": {
+          "value": "#cfc74c"
+        }
+      }
+    }
+  ],
+  "params": [
+    {
+      "name": "Score_Below",
+      "value": 95,
+      "bind": {
+        "input": "range",
+        "min": 5,
+        "max": 95,
+        "step": 5,
+        "name": "Maximum Economic Score: "
+      }
+    },
+    {
+      "name": "Score_Above",
+      "value": 75,
+      "bind": {
+        "input": "range",
+        "min": 5,
+        "max": 95,
+        "step": 5,
+        "name": "Minimum Economic Score: "
+      }
+    }
+  ]
+}
