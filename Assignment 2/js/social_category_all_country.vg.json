@@ -1,0 +1,159 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Economic Factors Scores Across Different Countries",
+  "width": 800,
+  "height": 600,
+  "data": {
+    "url": "https://raw.githubusercontent.com/ptuu0001/3179-testrepo/main/Assignment%202/data/economic_freedom_measurements%20(modded).csv"
+  },
+  "params": [
+    {
+      "name": "country_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Australia",
+          "Brazil",
+          "China",
+          "India",
+          "Japan",
+          "Russia",
+          "United Kingdom",
+          "United States"
+        ],
+        "labels": [
+          "Australia",
+          "Brazil",
+          "China",
+          "India",
+          "Japan",
+          "Russia",
+          "United Kingdom",
+          "United States"
+        ],
+        "name": "Country selection: "
+      }
+    }
+  ],
+
+  "transform": [
+    {
+      "filter": "datum.Country == country_selection"
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "max",
+          "field": "Score",
+          "as": "MaxScore"
+        }
+      ],
+      "groupby": ["Measurement"]
+    }
+  ],
+  "layer": [
+    {
+      "mark": { "type": "bar" },
+      "name": "placeholder",
+      "data": {
+        "values": [
+          {
+            "Country": "Australia",
+            "Measurement": "Business Freedom",
+            "Score": 88.3
+          },
+          {
+            "Country": "Australia",
+            "Measurement": "Labor Freedom",
+            "Score": 84.1
+          },
+          {
+            "Country": "Australia",
+            "Measurement": "Monetary Freedom",
+            "Score": 86.6
+          },
+          {
+            "Country": "Australia",
+            "Measurement": "Trade Freedom",
+            "Score": 87.6
+          }
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "Measurement",
+          "type": "nominal",
+          "title": "Factors Contributing to Economic Score",
+          "axis": { "labelAngle": 0, "titlePadding": 30 }
+        },
+        "y": {
+          "field": "Score",
+          "type": "quantitative",
+          "scale": { "domain": [0, 100] }
+        },
+        "color": {
+          "condition": {
+            "param": "country_selection",
+            "value": null
+          },
+          "value": "#68C2DB"
+        },
+        "tooltip": [
+          {
+            "field": "Country",
+            "type": "nominal",
+            "title": "Country"
+          },
+          {
+            "field": "Score",
+            "type": "quantitative",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": { "type": "bar" },
+      "encoding": {
+        "x": {
+          "field": "Measurement",
+          "type": "nominal"
+        },
+        "y": {
+          "field": "Score",
+          "type": "quantitative"
+        },
+        "color": {
+          "value": "red"
+        },
+        "tooltip": [
+          {
+            "field": "Country",
+            "type": "nominal",
+            "title": "Country"
+          },
+          {
+            "field": "Score",
+            "type": "quantitative",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": { "type": "tick", "size": 50 },
+      "encoding": {
+        "y": {
+          "field": "MaxScore",
+          "type": "quantitative",
+          "aggregate": "max"
+        },
+        "x": {
+          "field": "Measurement",
+          "type": "ordinal"
+        },
+        "color": { "value": "blue" }
+      }
+    }
+  ]
+}
