@@ -11,9 +11,15 @@
   "encoding": {
     "x": {
       "bin": true,
-      "field": "Trade Freedom"
+      "field": "Trade Freedom",
+      "title": "Score"
     },
-    "y": { "aggregate": "count", "title": "Count of distinct trade freedoms" },
+    "y": {
+      "aggregate": "count",
+      "title": "Count of distinct trade freedoms",
+      "scale": { "domain": [0, 85] }
+    },
+    "color": { "value": "#e8ce3a" },
     "tooltip": [
       {
         "field": "Trade Freedom",

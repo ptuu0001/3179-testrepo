@@ -12,8 +12,9 @@
       "bind": {
         "input": "select",
         "options": [
-          "Australia",
+          "Malaysia",
           "Afghanistan",
+          "Australia",
           "Brazil",
           "Bulgaria",
           "China",
@@ -26,7 +27,6 @@
           "Japan",
           "Korea, North ",
           "Korea, South",
-          "Malaysia",
           "New Zealand",
           "Russia",
           "Tonga",
@@ -37,8 +37,9 @@
           "Zimbabwe"
         ],
         "labels": [
-          "Australia",
+          "Malaysia",
           "Afghanistan",
+          "Australia",
           "Brazil",
           "Bulgaria",
           "China",
@@ -51,7 +52,6 @@
           "Japan",
           "Korea, North ",
           "Korea, South",
-          "Malaysia",
           "New Zealand",
           "Russia",
           "Tonga",
@@ -87,7 +87,7 @@
       "data": {
         "url": "https://raw.githubusercontent.com/ptuu0001/3179-testrepo/main/Assignment%202/data/economic_freedom_measurements%20(modded).csv"
       },
-      "transform": [{ "filter": { "field": "Country", "equal": "Australia" } }],
+      "transform": [{ "filter": { "field": "Country", "equal": "Malaysia" } }],
       "encoding": {
         "x": {
           "field": "Measurement",

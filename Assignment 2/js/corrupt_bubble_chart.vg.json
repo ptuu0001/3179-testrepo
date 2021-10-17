@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Freedom to make life choices Against Perceptions of corruption",
+  "title": "Freedom to make Life Choices Against Perceptions of Corruption",
   "width": 800,
   "height": 600,
   "data": {

@@ -1,168 +1,445 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
-    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
 
-    <!-- CSS file -->
-    <link rel="stylesheet" type="text/css" href="css/styles.css" media="all" />
+<head>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
 
-    <!-- Import pure.css -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
-      integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ"
-      crossorigin="anonymous"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-  </head>
-  <body>
-    <h1>What Makes A Country Liveable?</h1>
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all" />
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+  <div class="header">
+    <h3>FIT3179 - Assignment 2</h3>
+  </div>
+  <div class="page-col">
+    <h1>
+      What Makes A Country Liveable?
+      <div style="margin-top: -10px">
+        <small id="author-details">By Patrick Tu, 16/10/2021</small>
+      </div>
+    </h1>
     <p>
-      What makes a country a first world country? What makes a country a second
-      world country? These are some questions I wondered while sipping on my
-      morning coffee. So, I decided, why not write an article on this topic.
-      There are many factors that determines a country’s liveability. While this
-      article cannot account for all of them but can at least show the main
-      contributing factors. According to the World Health Organisation (WHO),
-      there are factors known as the determinants of health that influence an
-      individual’s health (1). These determinants of health include but are not
-      limited to social, economic situation, physical living environment and
-      individual’s behaviour. This article will explore various factors that can
-      affect individual’s livelihood and see how they compare against other
-      countries.
+      What makes a country liveable? These are some questions I wondered while sipping on my morning coffee. So I
+      decided, why not write an article on this topic. While doing my research I found there are many factors that
+      determines a country’s liveability. While this article cannot account for all of them, it can at least show some
+      of the main contributing factors.
     </p>
-    <div id="chloro_map"></div>
-    <div id="happiness_bar_chart"></div>
+    <br>
     <p>
-      The World Happiness Report is an annual survey that collates various
-      quality of life factors, to calculate and rank countries based on a
-      happiness score (2). As the name suggests, a higher score would mean a
-      country/its citizens are more happy. While the rest of the graphs and
-      visualisations in this article may not directly contribute in the
-      happiness scoring process, they are definitely still factors that
-      influences an individual’s happiness level.
+      According to the World Health Organisation (WHO), there are factors known as the
+      determinants of health that influence an individual’s health (World Health Organisation [WHO], 2017). These
+      determinants of health include but are not limited to social, economic situation, physical living environment and
+      individual’s behaviour. This article will explore various factors that can affect individual’s livelihood and see
+      how they compare against other countries.
     </p>
-    <div id="social_happy_scatter_plot"></div>
-    <div id="corrupt_bubble_chart"></div>
-    <div id="life_expect_line_chart"></div>
-    <div id="avg_life_expect"></div>
-    <div id="life_expect_range_dotplot"></div>
-    <div id="gdp_piechart" hidden="true"></div>
-    <div id="eco_score_bar_chart"></div>
+    <div id="chloro_map" class="vis-container"></div>
+    <p>
+      The World Happiness Report is an annual survey that collates various quality of life factors and bases their
+      ranking on countries on a happiness score (Wikipedia, 2021). The happiness score is determined by individuals
+      answering this question:
+      <br />
+    <div id="quote">
+      ‘Please imagine a ladder, with steps numbered from 0 at the bottom to 10
+      at the top. The top of the ladder represents the best possible life for
+      you and the bottom of the ladder represents the worst possible life for
+      you. On which step of the ladder would you say you personally feel you
+      stand at this time?’ (Helliwell, Huang, Wang, & Norton, 2021).
+    </div>
+    </p>
+    <p>
+      As the name suggests, a higher score would mean a country/its citizens are happier. While the rest of the graphs
+      and visualisations in this article may not directly contribute to the happiness scoring process, they are
+      definitely still factors that influences an individual’s happiness level. It would seem that most developed
+      countries appear to have relatively happy citizens, while developing countries are more likely to be unhappy.
+    </p>
+    <br />
+    <p>
+      Though one critique I would like to add on the Happiness Report, is that it doesn’t consider exceptional
+      circumstances that may influence an individual’s psyche. As an example, if a person recently had a break-up, they
+      would likely be at a very low point in their life. If they were to score their happiness, it may not accurately
+      reflect how they feel about their happiness levels overall, since they are still dealing with an emotional event
+      in their life.
+    </p>
+    <div id="corrupt_bubble_chart" class="vis-container"></div>
+    <p>
+      Freedom to make life choices is another question that was asked in the World Happiness Report, where people were
+      asked:
+    <div id="quote">
+      ‘Are you satisfied or dissatisfied with your freedom to choose what you do with your life?’ (Helliwell,
+      Huang, & Wang, 2021).
+    </div>
+    Multiple factors can contribute to how this question was answered. Some contexts can include if they are
+    experiencing any economic burden, their current mental wellbeing, their country’s current political landscape or
+    extraneous factors that are out of their control, such as a broken bone limiting their mobility; again a weakness
+    of the happiness report.
+    </p>
+    <br>
+    <p>
+      For perception of corruption, users were asked if:
+    <div id="quote">
+      ‘Corruption was widespread throughout the government or not’ and ‘Is corruption widespread within businesses or
+      not?’
+      (Helliwell et al., 2021).
+    </div>
+    Having a lower score, would mean the country would be perceived as more corrupt.
+    <br>
+    It mostly does seem that having corrupt governments would correlate to a lower happiness score, but it does seem
+    to affect in the scoring of ‘freedom to make life choices’. Perhaps this may indicate that despite being aware of
+    their corrupt governments, it does not impede their daily activities, so they still feel a sense of freedom. What
+    is your interpretation?
+    </p>
+    <br>
+    <p>
+      One more thing I like to point out is an outlier for the country Rwanda (you can see it by adjusting the happiness
+      score range to be between 2.5 and 3.5, located on the top-right corner). Despite having a low corruption score
+      (0.41) and high ‘freedom to make life choices’ score (0.56), it seems to be quite an unhappy country with a score
+      of 3.33.
+    </p>
+    <div id="social_happy_scatter_plot" class="vis-container"></div>
+    <p>
+      In the context of the Happiness Report, social support refers to the question:
+    <div id="quote">
+      ‘If you were in trouble, do you have relatives or friends you can count on to help you whenever you need them, or
+      not?’ (Helliwell et al., 2021).
+    </div>
+    It is not difficult to see how the correlation of social support affects happiness. Forming close and meaningful
+    relationships and having a supportive network of friends, is a contributing factor in an individual’s social
+    health. It should be noted that the question does not refer to external services such as therapy or consultations.
+    </p>
+    <br>
+    <p>
+      Healthy life expectancy, as the name suggests, is how well an individual is expected to live a fulfilling life,
+      without worrying about illness or injuries that can affect their daily basis of life. We can see how having social
+      support from others correlates to people being more likely happy, while still being able to lead healthy lives.
+    </p>
+  </div>
+
+  <div class="pure-g" style="width: 1300px; margin:0 auto; padding-top: 2rem;">
+    <div class="pure-u-1-2">
+      <div id="life_expect_range_dotplot"></div>
+    </div>
+    <div class="pure-u-1-2">
+      <div id="avg_life_expect"></div>
+    </div>
+  </div>
+
+  <div class="page-col">
+    <div id="life_expect_line_chart" class="vis-container"></div>
+
+    <p>
+      We can see that overtime life expectancy has risen for the entire world, including countries on an individual
+      level. Factors such as advancements in medicines, better understanding in managing and treating diseases, better
+      safety standards, introduction of hygienic practices and access to medical care all contributed to higher overall
+      life expectancy (Friedman, 2015).
+    </p>
+    <br>
+    <p>
+      Notice how around 1914 and 1945 there was a considerable dip in the average life expectancy for a few countries,
+      especially for Russia. This was because of World War I and World War II, where millions lost their lives fighting
+      in the global conflict causing a dramatic drop in life expectancy for participating countries.
+      However, there is still a disproportionate difference between developing and developed countries (not represented
+      that well in the line graph, due to the small dataset). India, still being a developing country is overtaken by
+      most developed countries by at least 10 years. This is often generalised to the lack of access to standard health
+      care services.
+    </p>
+    <br>
+    <p>
+      Being able to access healthcare is one of the most important factors on affecting the average life expectancy in
+      any country. It is in a country’s best interest to provide universal healthcare system, that is accessible for
+      everyone, regardless of economic and environmental circumstances (Shimizu, n.d.). The treatment or prevention of
+      illness and injuries all fall under the umbrella term of healthcare. Having healthcare systems with a strong
+      foundation, means an individual can recover quickly and resume to enjoying their life without being burdened by
+      any unexpected caveats, such as high payment fees.
+    </p>
+    <br>
+    <p>
+      Countries such as South Korea, Denmark and Australia are widely regarded as countries with the best healthcare
+      systems in the world (World Population Review, 2021). They all share in common having a free universal healthcare,
+      that is accessible to all their citizens regardless of their circumstances.
+    </p>
+    <div id="social_score_chloro" class="vis-container"></div>
+    <p>
+      The economic freedom index is an annual ranking created by The Heritage Foundation, that measures the economic
+      freedom from around the world. As stated by foundation, a country is considered to be economically free when
+      <i>‘individuals are free to work, produce, consume, and invest in any way they please’</i> and <i>‘governments
+        allow labor, capital, and goods to move freely, and refrain from coercion or constraint of liberty…’ </i> (The
+      Heritage Foundation, 2021a).
+    </p>
+    <br>
+    <p>
+      There are twelve factors which are used to determine the economic freedom score. They are grouped as:
+    <ul>
+      <li>Rule of law</li>
+      <li>Government size</li>
+      <li>Regulatory efficiency</li>
+      <li>Open markets</li>
+    </ul>
+    However, for the purpose of keeping this article at a reasonable length, we are only going to focus on the
+    category regulatory efficiency and one aspect from the open market category, to give the data a nice mix.
+    </p>
+    <br>
 
     <div class="pure-g">
-      <div class="pure-u-1-4">
-        <div id="labour_freedom_histogram" class="vis-container"></div>
+      <div class="pure-u-1-2">
+        <div id="labour_freedom_histogram"></div>
       </div>
-      <div class="pure-u-1-4">
-        <div id="business_freedom_histogram" class="vis-container"></div>
+      <div class="pure-u-1-2">
+        <div class="description description-right">
+          <p style="margin-left: -4rem;">
+            <b>Labour freedom (regulatory efficiency):</b>
+            <br>
+            Labour freedom is a quantitative measurement where various factors
+            concerning a country’s labour market and regulations, such as minimum wage or mandatory severance pay are
+            considered to the score (The Heritage Foundation, 2021b).
+          </p>
+        </div>
       </div>
-      <div class="pure-u-1-4">
+    </div>
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div id="business_freedom_histogram"></div>
+      </div>
+      <div class="pure-u-1-2">
+        <div class="description description-right">
+          <p style="margin-left: -4rem;">
+            <b>Business freedom (regulatory efficiency):</b>
+            <br>
+            Business freedom measure the efficacy of government regulation of businesses (The Heritage Foundation,
+            2021c). Such factors that are measured include starting business costs or starting business minimum capital.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="pure-g">
+      <div class="pure-u-1-2">
         <div id="monetary_freedom_histogram"></div>
       </div>
-      <div class="pure-u-1-4">
+      <div class="pure-u-1-2">
+        <div class="description description-right">
+          <p style="margin-left: -4rem;">
+            <b>Monetary freedom (regulatory efficiency):</b>
+            <br>
+            Monetary freedom measures how stable the market is, by measuring the price stability and price controls (The
+            Heritage Foundation, 2021d). Ideally, intervention and inflation should be kept at a minimum to not disrupt
+            market activity.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="pure-g">
+      <div class="pure-u-1-2">
         <div id="trade_freedom_histogram"></div>
+      </div>
+      <div class="pure-u-1-2">
+        <div class="description description-right">
+          <p style="margin-left: -4rem;">
+            <b>Trade freedom (open markets): </b>
+            <br>
+            Trade freedom is a composite measurement of both the absence of tariffs and non-tariff barriers that impede
+            the imports and exports of goods and services (The Heritage Foundation, 2021e). Countries ideally should be
+            able to internationally trade with each other, without barriers that impede the flow of goods and services
+            to ensure a free market.
+          </p>
+        </div>
       </div>
     </div>
 
-    <script type="text/javascript">
-      var spec2 = "js/chloro_map.vg.json";
-      vegaEmbed("#chloro_map", spec2)
-        .then(function (result) {
-          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-        })
-        .catch(console.error);
+    <p>
+      Doing a bit of light analysis of the histograms, labour freedom and business freedom graphs appear to be evenly
+      distributed, with the business freedom graph being a bit more skewed on the right. Monetary freedom and trade
+      freedom histograms seem to be doing well in terms of their respective freedoms.
+    </p>
+    <br>
+    <p>
+      Wondering how your country is doing in terms of their economic factors? Use the bar graph below, where you can
+      compare and see how yours and other countries are doing!
+    </p>
+  </div>
 
-      var happinessChart = "js/happiness_bar_chart.vg.json";
-      vegaEmbed("#happiness_bar_chart", happinessChart)
-        .then(function (result) {
-          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-        })
-        .catch(console.error);
+  <div class="pure-g" style="width: 1000px; margin:0 auto; padding-top: 2rem;">
+    <div class="pure-u-1-2">
+      <div id="social_category_all_country"></div>
+    </div>
+    <div class="pure-u-1-2">
+      <div id="social_category_all_country_2"></div>
+    </div>
+  </div>
 
-      var socialScatterPlot = "js/social_happy_scatter_plot.vg.json";
-      vegaEmbed("#social_happy_scatter_plot", socialScatterPlot)
-        .then(function (result) {
-          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-        })
-        .catch(console.error);
+  <div class="page-col">
+    <p>
+      As a heads up, yes. North Korea has scored the lowest score out of all the countries, even having their monetary
+      freedom and trade freedom scoring at an unbelievable <b>zero</b>.
+    </p>
+    <br>
+    <p>
+      Reiterating my points again, there are so many factors that contribute to the liveability of the country that this
+      article cannot cover all of them. If you are interested in this topic, reading the about the determinants of
+      health, as defined by the World Health Organisation (WHO) is a great overall and guideline of aspects that affect
+      an individual’s wellbeing.
+    </p>
+    <h3 style="padding-top: 4rem;">References</h3>
+    <p style="font-style: italic; font-size: 85%;">
+      World Health Organisation. (2017). Determinants of health. Retrieved from
+      <a href="https://www.who.int/news-room/q-a-detail/determinants-of-health">
+        https://www.who.int/news-room/q-a-detail/determinants-of-health</a>
+      <br><br>
 
-      var corruptBubbleChart = "js/corrupt_bubble_chart.vg.json";
-      vegaEmbed("#corrupt_bubble_chart", corruptBubbleChart)
-        .then(function (result) {
-          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-        })
-        .catch(console.error);
+      Wikipedia. (2021). World Happiness Report. Retrieved from <a
+        href="https://en.wikipedia.org/wiki/World_Happiness_Report">https://en.wikipedia.org/wiki/World_Happiness_Report</a>
+      <br><br>
 
-      var lifeExpectLine = "js/life_expect_line_chart.vg.json";
-      vegaEmbed("#life_expect_line_chart", lifeExpectLine)
-        .then(function (result) {
-          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-        })
-        .catch(console.error);
+      Helliwell, J. F., Huang, H., & Wang, S. (2021). Changing World Happiness. Retrieved from
+      <a
+        href="https://worldhappiness.report/ed/2019/changing-world-happiness/">https://worldhappiness.report/ed/2019/changing-world-happiness/</a>
+      <br><br>
 
-      var lifeExpectDotPlot = "js/life_expect_range_dotplot.vg.json";
-      vegaEmbed("#life_expect_range_dotplot", lifeExpectDotPlot)
-        .then(function (result) {
-          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-        })
-        .catch(console.error);
+      Helliwell, J. F., Huang, H., Wang, S., & Norton M. (2021). Statistical Appendix 1 for Chapter 2 of World Happiness
+      Report 2021. Retrieved <a
+        href="https://happiness-report.s3.amazonaws.com/2021/Appendix1WHR2021C2.pdf">https://happiness-report.s3.amazonaws.com/2021/Appendix1WHR2021C2.pdf</a>
+      <br><br>
 
-      var avgLifeExpectLine = "js/avg_life_expect.vg.json";
-      vegaEmbed("#avg_life_expect", avgLifeExpectLine)
-        .then(function (result) {
-          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-        })
-        .catch(console.error);
+      Shimizu, Y. (n.d.). Universal Health Coverage. Retrieved from <a
+        href="https://www.who.int/health-topics/universal-health-coverage#tab=tab_1">https://www.who.int/health-topics/universal-health-coverage#tab=tab_1</a>
+      <br><br>
 
-      var gdpPieChart = "js/gdp_piechart.vg.json";
-      vegaEmbed("#gdp_piechart", gdpPieChart)
-        .then(function (result) {
-          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-        })
-        .catch(console.error);
+      World Population Review. (2021). Best Healthcare In The World 2021. Retrieved from
+      <a href="https://worldpopulationreview.com/country-rankings/best-healthcare-in-the-world">
+        https://worldpopulationreview.com/country-rankings/best-healthcare-in-the-world
+      </a>
+      <br><br>
 
-      var ecoScoreBarChart = "js/eco_score_bar_chart.vg.json";
-      vegaEmbed("#eco_score_bar_chart", ecoScoreBarChart)
-        .then(function (result) {
-          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-        })
-        .catch(console.error);
+      Friedman, L. F. (2015). One chart shows how quickly life expectancy has increased in the last 175 years. Retrieved
+      from <a
+        href="https://www.businessinsider.com.au/how-has-life-expectancy-changed-throughout-history-2015-6?r=US&IR=T">
+        https://www.businessinsider.com.au/how-has-life-expectancy-changed-throughout-history-2015-6?r=US&IR=T</a>
+      <br><br>
 
-      var labourFreeHisto =
-        "js/economic_histograms/labour_freedom_histogram.vg.json";
-      vegaEmbed("#labour_freedom_histogram", labourFreeHisto)
-        .then(function (result) {
-          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-        })
-        .catch(console.error);
+      The Heritage Foundation. (2021a). About The Index. Retrieved from <a href="https://www.heritage.org/index/about">
+        https://www.heritage.org/index/about</a>
+      <br><br>
+      The Heritage Foundation. (2021b). Labor Freedom. Retrieved from <a
+        href="https://www.heritage.org/index/labor-freedom">
+        https://www.heritage.org/index/labor-freedom</a>
+      <br><br>
+      The Heritage Foundation. (2021c). Business Freedom. Retrieved from <a
+        href="https://www.heritage.org/index/business-freedom">
+        https://www.heritage.org/index/business-freedom</a>
+      <br><br>
+      The Heritage Foundation. (2021d). Monetary Freedom. Retrieved from <a
+        href="https://www.heritage.org/index/monetary-freedom">
+        https://www.heritage.org/index/monetary-freedom</a>
+      <br><br>
+      The Heritage Foundation. (2021e). Trade Freedom. Retrieved from <a
+        href="https://www.heritage.org/index/trade-freedom">
+        https://www.heritage.org/index/trade-freedom</a>
+    </p>
+  </div>
 
-      var businessFreeHisto =
-        "js/economic_histograms/business_freedom_histogram.vg.json";
-      vegaEmbed("#business_freedom_histogram", businessFreeHisto)
-        .then(function (result) {
-          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-        })
-        .catch(console.error);
+  <script type="text/javascript">
+    var spec2 = "js/chloro_map.vg.json";
+    vegaEmbed("#chloro_map", spec2)
+      .then(function (result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      })
+      .catch(console.error);
 
-      var monetaryFreeHisto =
-        "js/economic_histograms/monetary_freedom_histogram.vg.json";
-      vegaEmbed("#monetary_freedom_histogram", monetaryFreeHisto)
-        .then(function (result) {
-          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-        })
-        .catch(console.error);
+    var socialScatterPlot = "js/social_happy_scatter_plot.vg.json";
+    vegaEmbed("#social_happy_scatter_plot", socialScatterPlot)
+      .then(function (result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      })
+      .catch(console.error);
 
-      var tradeFreeHisto =
-        "js/economic_histograms/trade_freedom_histogram.vg.json";
-      vegaEmbed("#trade_freedom_histogram", tradeFreeHisto)
-        .then(function (result) {
-          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-        })
-        .catch(console.error);
-    </script>
-  </body>
+    var corruptBubbleChart = "js/corrupt_bubble_chart.vg.json";
+    vegaEmbed("#corrupt_bubble_chart", corruptBubbleChart)
+      .then(function (result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      })
+      .catch(console.error);
+
+    var lifeExpectLine = "js/life_expect_line_chart.vg.json";
+    vegaEmbed("#life_expect_line_chart", lifeExpectLine)
+      .then(function (result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      })
+      .catch(console.error);
+
+    var lifeExpectDotPlot = "js/life_expect_range_dotplot.vg.json";
+    vegaEmbed("#life_expect_range_dotplot", lifeExpectDotPlot)
+      .then(function (result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      })
+      .catch(console.error);
+
+    var avgLifeExpectLine = "js/avg_life_expect.vg.json";
+    vegaEmbed("#avg_life_expect", avgLifeExpectLine)
+      .then(function (result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      })
+      .catch(console.error);
+
+    var socialChloro = "js/social_score_chloro.vg.json";
+    vegaEmbed("#social_score_chloro", socialChloro)
+      .then(function (result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      })
+      .catch(console.error);
+
+    var socialCatBar = "js/social_category_all_country.vg.json";
+    vegaEmbed("#social_category_all_country", socialCatBar)
+      .then(function (result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      })
+      .catch(console.error);
+
+    var socialCatBar = "js/social_category_all_country_2.vg.json";
+    vegaEmbed("#social_category_all_country_2", socialCatBar)
+      .then(function (result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      })
+      .catch(console.error);
+
+    var labourFreeHisto =
+      "js/economic_histograms/labour_freedom_histogram.vg.json";
+    vegaEmbed("#labour_freedom_histogram", labourFreeHisto)
+      .then(function (result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      })
+      .catch(console.error);
+
+    var businessFreeHisto =
+      "js/economic_histograms/business_freedom_histogram.vg.json";
+    vegaEmbed("#business_freedom_histogram", businessFreeHisto)
+      .then(function (result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      })
+      .catch(console.error);
+
+    var monetaryFreeHisto =
+      "js/economic_histograms/monetary_freedom_histogram.vg.json";
+    vegaEmbed("#monetary_freedom_histogram", monetaryFreeHisto)
+      .then(function (result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      })
+      .catch(console.error);
+
+    var tradeFreeHisto =
+      "js/economic_histograms/trade_freedom_histogram.vg.json";
+    vegaEmbed("#trade_freedom_histogram", tradeFreeHisto)
+      .then(function (result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      })
+      .catch(console.error);
+  </script>
+</body>
+
 </html>

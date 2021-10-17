@@ -1,14 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Average Life Expectancy",
-  "width": 800,
-  "height": 600,
+  "width": 500,
+  "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/ptuu0001/3179-testrepo/main/Assignment%202/data/Average%20Life%20Expect%20(217%20years).csv"
   },
   "layer": [
     {
-      "mark": { "type": "line", "color": "red", "size": 3 },
+      "mark": { "type": "line", "color": "#eb4242", "size": 3 },
       "encoding": {
         "x": { "field": "Year", "timeUnit": "year", "title": "Year" },
         "y": {

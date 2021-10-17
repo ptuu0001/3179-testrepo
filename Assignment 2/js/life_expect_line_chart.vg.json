@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Life Expectancy Overtime",
+  "title": "Countries' Life Expectancy Overtime",
   "width": 800,
-  "height": 600,
+  "height": 500,
   "data": {
     "url": "https://raw.githubusercontent.com/ptuu0001/3179-testrepo/main/Assignment%202/data/Life%20expectancy%20(217%20years).csv"
   },
@@ -15,17 +15,10 @@
           null,
           "Australia",
           "Brazil",
-          "Canada",
           "China",
-          "France",
-          "Germany",
           "India",
-          "Italy",
           "Japan",
-          "Mexico",
           "Russia",
-          "Spain",
-          "Switzerland",
           "United Kingdom",
           "United States"
         ],
@@ -33,17 +26,10 @@
           "Show All",
           "Australia",
           "Brazil",
-          "Canada",
           "China",
-          "France",
-          "Germany",
           "India",
-          "Italy",
           "Japan",
-          "Mexico",
           "Russia",
-          "Spain",
-          "Switzerland",
           "United Kingdom",
           "United States"
         ],
@@ -54,6 +40,22 @@
   "transform": [
     {
       "filter": "country_selection == null || datum.Entity == country_selection"
+    },
+    {
+      "filter": {
+        "not": {
+          "field": "Entity",
+          "oneOf": [
+            "Switzerland",
+            "Canada",
+            "Germany",
+            "Italy",
+            "Spain",
+            "France",
+            "Mexico"
+          ]
+        }
+      }
     }
   ],
   "encoding": {
@@ -65,7 +67,8 @@
     "y": {
       "field": "Life expectancy",
       "title": "Life expectancy (in years)",
-      "type": "quantitative"
+      "type": "quantitative",
+      "scale": { "domain": [0, 90] }
     },
     "color": {
       "condition": {
@@ -117,18 +120,18 @@
           "mark": {
             "type": "text",
             "align": "left",
-            "dx": 4
+            "dx": 8
           },
           "encoding": {
             "text": { "field": "Entity", "type": "nominal" },
-
             "opacity": {
               "condition": {
                 "param": "hover",
                 "value": 1
               },
               "value": 0
-            }
+            },
+            "color": { "value": "black" }
           }
         }
       ]

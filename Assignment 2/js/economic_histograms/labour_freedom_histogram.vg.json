@@ -11,9 +11,15 @@
   "encoding": {
     "x": {
       "bin": true,
-      "field": "Labor Freedom"
+      "field": "Labor Freedom",
+      "title": "Score"
     },
-    "y": { "aggregate": "count", "title": "Count of distinct labour freedoms" },
+    "y": {
+      "aggregate": "count",
+      "title": "Count of distinct labour freedoms",
+      "scale": { "domain": [0, 85] }
+    },
+    "color": { "value": "#e8ce3a" },
     "tooltip": [
       {
         "field": "Labour Freedom",

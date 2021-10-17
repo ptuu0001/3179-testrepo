@@ -6,11 +6,55 @@
   /*height: 1000px;
 	width: 800px;*/
 }
-/* May or may not use */
+
 .vis-container {
   width: 100%;
+  margin: 0 auto;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
+.page-col {
+  width: 900px;
+  margin: 0 auto;
+}
+
+#author-details {
+  font-size: 15px;
+  font-weight: normal;
+  font-style: italic;
+}
+
+#quote {
+  width: 50%;
+  margin: 0 auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-style: italic;
+}
+
+.header {
+  padding: 0.5px;
+  text-align: left;
+  text-indent: 10px;
+  background: #429e64;
+  color: white;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #fcfcfc;
+  padding-bottom: 5rem;
+}
+
+h1,
 p {
-  /* color: blueviolet; */
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0 auto;
+}
+
+.pure-g {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }

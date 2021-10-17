@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Life expectancy (Range Dotplot)",
-  "width": 800,
-  "height": 600,
+  "title": "Life Expectancy Differences",
+  "width": 500,
+  "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/ptuu0001/3179-testrepo/main/Assignment%202/data/Life%20expectancy%20(217%20years).csv"
   },

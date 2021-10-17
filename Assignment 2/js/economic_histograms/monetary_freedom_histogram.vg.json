@@ -11,12 +11,16 @@
   "encoding": {
     "x": {
       "bin": true,
-      "field": "Monetary Freedom"
+      "field": "Monetary Freedom",
+      "scale": { "domain": [0, 100] },
+      "title": "Score"
     },
     "y": {
       "aggregate": "count",
-      "title": "Count of distinct monetary freedoms"
+      "title": "Count of distinct monetary freedoms",
+      "scale": { "domain": [0, 85] }
     },
+    "color": { "value": "#e8ce3a" },
     "tooltip": [
       {
         "field": "Monetary Freedom",

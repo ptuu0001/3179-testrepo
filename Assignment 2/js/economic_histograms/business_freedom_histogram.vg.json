@@ -11,12 +11,15 @@
   "encoding": {
     "x": {
       "bin": true,
-      "field": "Business Freedom"
+      "field": "Business Freedom",
+      "title": "Score"
     },
     "y": {
       "aggregate": "count",
-      "title": "Count of distinct business freedoms"
+      "title": "Count of distinct business freedoms",
+      "scale": { "domain": [0, 85] }
     },
+    "color": { "value": "#e8ce3a" },
     "tooltip": [
       {
         "field": "Business Freedom",
