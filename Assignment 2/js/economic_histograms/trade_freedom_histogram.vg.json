@@ -16,7 +16,7 @@
     },
     "y": {
       "aggregate": "count",
-      "title": "Count of distinct trade freedoms",
+      "title": "Count of distinct trade freedom",
       "scale": { "domain": [0, 85] }
     },
     "color": { "value": "#e8ce3a" },

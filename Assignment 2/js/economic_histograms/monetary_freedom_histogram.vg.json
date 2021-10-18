@@ -17,7 +17,7 @@
     },
     "y": {
       "aggregate": "count",
-      "title": "Count of distinct monetary freedoms",
+      "title": "Count of distinct monetary freedom",
       "scale": { "domain": [0, 85] }
     },
     "color": { "value": "#e8ce3a" },
